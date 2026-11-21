@@ -1,0 +1,11 @@
+# .NET build output
+[Bb]in/
+[Oo]bj/
+
+# Local IDE settings
+.vs/
+*.user
+*.suo
+
+# OS metadata
+.DS_Store
