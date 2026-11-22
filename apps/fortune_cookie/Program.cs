@@ -1,14 +1,17 @@
 var builder = WebApplication.CreateBuilder(args);
-var app = builder.Build();
 
 builder.Services.AddCors(options =>
 {
-   policy.WithOrgins("http://localhost:5173").AllowAnyHeader().AllowAnyMethod();
+   options.AddDefaultPolicy(policy =>
+   {
+      policy.WithOrigins("http://localhost:5173").AllowAnyHeader().AllowAnyMethod();
+   });
 });
+
+var app = builder.Build();
 
 app.UseCors();
 
-record UserDto(int Id, string Name);
 
 
 
@@ -27,10 +30,10 @@ string[] fortunes =
 };
 
 
-app.MapGet("/", () => {
+app.MapGet("/user", (int Id) => 
+{
          return Results.Ok(new UserDto(Id, "Chad")); 
-       }
-);
+});
 
 app.MapGet("/", () => {
          int randNum = Random.Shared.Next(fortunes.Length);
@@ -40,3 +43,5 @@ app.MapGet("/", () => {
 );
 
 app.Run();
+
+record UserDto(int Id, string Name);
