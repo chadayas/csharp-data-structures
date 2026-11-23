@@ -2,6 +2,10 @@
 [Bb]in/
 [Oo]bj/
 
+# Frontend dependencies and build output
+node_modules/
+dist/
+
 # Local IDE settings
 .vs/
 *.user

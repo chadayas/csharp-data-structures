@@ -13,8 +13,6 @@ var app = builder.Build();
 app.UseCors();
 
 
-
-
 string[] fortunes =
 {
     "The path you fear may lead to the life you seek.",
@@ -29,19 +27,15 @@ string[] fortunes =
     "An unexpected turn will bring you closer to something you've long desired."
 };
 
+app.MapGet("/api/fortune", () => {
+             
+      int randNum = Random.Shared.Next(fortunes.Length);
+      string sentence = fortunes[randNum];      
 
-app.MapGet("/user", (int Id) => 
-{
-         return Results.Ok(new UserDto(Id, "Chad")); 
-});
-
-app.MapGet("/", () => {
-         int randNum = Random.Shared.Next(fortunes.Length);
-         string sentence = fortunes[randNum];      
-         return sentence; 
-       }
+      return Results.Ok(new FortuneDto(sentence)); 
+      }
 );
 
 app.Run();
 
-record UserDto(int Id, string Name);
+record FortuneDto(string sentence);

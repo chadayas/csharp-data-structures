@@ -84,10 +84,10 @@ p {
 }
 
 code,
-.counter {
+.open-fortune{
   font-family: var(--mono);
   display: inline-flex;
-  border-radius: 4px;
+  border-radius: 14px;
   color: var(--text-h);
 }
 
@@ -98,8 +98,8 @@ code {
   background: var(--code-bg);
 }
 
-.counter {
-  font-size: 16px;
+.open-fortune{
+  font-size: 26px;
   padding: 5px 10px;
   border-radius: 5px;
   color: var(--accent);
@@ -157,7 +157,6 @@ code {
 }
 
 #app {
-  width: 1126px;
   max-width: 100%;
   margin: 0 auto;
   text-align: center;
