@@ -1,3 +1,11 @@
+using DotNetEnv;
+
+Env.Load();
+
+var connectionString = Environment.GetEnvironmentVariable("CONNECTION_STRING");
+await using var dataSrc = NpgsqlDataSource.Create(connStr);
+
+
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddCors(options =>

@@ -8,7 +8,7 @@ async function getFortune(): Promise<FortuneDto>{
    const res = await fetch("http://localhost:5196/api/fortune");
    
    if(!res.ok){
-      throw new Error("Problem with fetch: ${res.status}");
+      throw new Error(`Problem with fetch: ${res.status}`);
    }
 
    const fortune: FortuneDto = await res.json();
@@ -30,9 +30,10 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
 const button = document.querySelector<HTMLButtonElement>('#open-cookie');
 const show = document.querySelector<HTMLParagraphElement>('#fortune');
 
-if(button){
+if(button && show){
    button.addEventListener("click", async () => {
       show.textContent = "Loading fortune...";  
+      
       try{
          const fortune = await getFortune();
          show.textContent = fortune.sentence;
